@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>世界杯 · 知识索引</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #e6f3f0;
+            color: #1a2b2e;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* 头部 — 不喧哗，只标记 */
+        .hero {
+            background: linear-gradient(145deg, #d9ece9 0%, #c0dbd6 100%);
+            border-radius: 32px 32px 24px 24px;
+            padding: 2.2rem 2rem 2rem;
+            margin-bottom: 2.2rem;
+            box-shadow: 0 8px 18px rgba(0, 60, 50, 0.08);
+            border: 1px solid rgba(60, 130, 120, 0.15);
+        }
+
+        .hero h1 {
+            font-size: 2.1rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            color: #0d3d3a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .hero h1 span {
+            background: #2b6b64;
+            color: #eef9f6;
+            font-size: 0.85rem;
+            font-weight: 400;
+            padding: 0.2rem 0.9rem;
+            border-radius: 30px;
+            letter-spacing: 0.4px;
+            display: inline-block;
+        }
+
+        .hero p {
+            margin-top: 1rem;
+            font-size: 1.05rem;
+            color: #1f4a45;
+            max-width: 80%;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 1.7rem; }
+            .hero p { max-width: 100%; }
+            .hero { padding: 1.6rem 1.2rem; }
+        }
+
+        /* 网格卡片 —— 目录感 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.3rem;
+            margin-bottom: 2.2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.5rem 1.2rem 1.3rem;
+            box-shadow: 0 4px 12px rgba(0, 55, 50, 0.04);
+            transition: all 0.15s ease;
+            border: 1px solid #d1e5e0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            border-color: #73a69b;
+            box-shadow: 0 8px 18px rgba(30, 95, 85, 0.06);
+            transform: translateY(-2px);
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            font-weight: 550;
+            color: #0c403a;
+            letter-spacing: -0.01em;
+            margin-bottom: 0.6rem;
+            border-left: 4px solid #429185;
+            padding-left: 0.7rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #2b4f4a;
+            flex: 1;
+        }
+
+        .card .meta-tag {
+            margin-top: 0.9rem;
+            font-size: 0.75rem;
+            color: #59837a;
+            border-top: 1px dashed #c3dbd3;
+            padding-top: 0.7rem;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .meta-tag span {
+            background: #e3f2ed;
+            padding: 0.2rem 0.6rem;
+            border-radius: 20px;
+        }
+
+        /* 说明 + 提示 混合区 */
+        .info-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.6rem;
+            margin-bottom: 2.2rem;
+        }
+
+        .info-block {
+            flex: 1 1 280px;
+            background: #f5fcf9;
+            border-radius: 24px;
+            padding: 1.5rem 1.4rem;
+            border: 1px solid #cbe3db;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+        }
+
+        .info-block h4 {
+            font-weight: 500;
+            font-size: 1.1rem;
+            color: #15544b;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .info-block p, .info-block li {
+            font-size: 0.95rem;
+            color: #1e4741;
+        }
+
+        .info-block ul {
+            padding-left: 1.2rem;
+            margin-top: 0.3rem;
+        }
+
+        .info-block ul li {
+            margin-bottom: 0.4rem;
+        }
+
+        .highlight-link {
+            background: #dff0eb;
+            padding: 0.1rem 0.3rem;
+            border-radius: 6px;
+            color: #13544b;
+            transition: background 0.1s;
+        }
+
+        .highlight-link:hover {
+            background: #bbdcd2;
+        }
+
+        /* 相关 FAQ 摘要 */
+        .faq-summary {
+            background: #ffffffd9;
+            border-radius: 28px;
+            padding: 1.5rem 1.8rem;
+            margin-bottom: 2rem;
+            border: 1px solid #bcd6cd;
+            backdrop-filter: blur(2px);
+        }
+
+        .faq-summary h4 {
+            font-weight: 500;
+            color: #134942;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.3px;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem 1.8rem;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #d5e7e1;
+            padding-bottom: 0.6rem;
+        }
+
+        .faq-item q {
+            font-weight: 450;
+            color: #0d3f39;
+        }
+
+        .faq-item .ans {
+            font-size: 0.9rem;
+            color: #30635a;
+            margin-top: 0.2rem;
+        }
+
+        .faq-item .ans a {
+            color: #1b6659;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            text-decoration-color: #72ab9d;
+        }
+
+        .faq-item .ans a:hover {
+            color: #003d33;
+            text-decoration-color: #003d33;
+        }
+
+        /* 页底小字 */
+        .footer-note {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #5a7f77;
+            border-top: 1px solid #bcd3cb;
+            padding-top: 1.5rem;
+            letter-spacing: 0.3px;
+        }
+
+        a {
+            color: #166b5d;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #0a443b;
+        }
+
+        /* 内嵌锚点句子特殊样式——用在info-block句子里的链接自然融入 */
+        .inline-link {
+            font-weight: 500;
+            border-bottom: 1px dotted #479486;
+        }
+
+        .inline-link:hover {
+            border-bottom-style: solid;
+        }
+
+        @media (max-width: 480px) {
+            .faq-summary { padding: 1rem; }
+            .grid { gap: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- hero -->
+    <div class="hero">
+        <h1>
+            ⚽ 世界杯·知识库
+            <span>查·对·延</span>
+        </h1>
+        <p>日常查询、对照梳理、延伸阅读 —— 有关 <strong>世界杯</strong> 的碎片信息，在这里归拢成卡片。</p>
+    </div>
+
+    <!-- 网格卡片：目录感入口 -->
+    <div class="grid">
+        <div class="card">
+            <h3>历届冠军 · 对照</h3>
+            <p>从1930到2022，冠军、决赛比分、主办国一览。方便快速横向比较不同年代的赛制与格局。</p>
+            <div class="meta-tag"><span>8 条目</span><span>数据可查</span></div>
+        </div>
+        <div class="card">
+            <h3>纪录与里程碑</h3>
+            <p>进球最多、出场最久、最年长冠军…… 各项由球员和球队保持的世界杯之最。</p>
+            <div class="meta-tag"><span>纪录</span><span>历史</span></div>
+        </div>
+        <div class="card">
+            <h3>经典比赛·延伸</h3>
+            <p>1954伯尔尼奇迹、1970贝利、1998齐达内、2014格策…… 每场背后都有战术与故事。</p>
+            <div class="meta-tag"><span>6 场精选</span><span>延伸阅读</span></div>
+        </div>
+        <div class="card">
+            <h3>东道主·轮换</h3>
+            <p>各大洲举办次数、城市与球场、申办流程简介。适合规划观赛或做地理对照。</p>
+            <div class="meta-tag"><span>大洲分布</span><span>申办</span></div>
+        </div>
+    </div>
+
+    <!-- 说明 + 提示 混合区（偏生活化叙述） -->
+    <div class="info-area">
+        <div class="info-block">
+            <h4>📘 说明 · 怎么用</h4>
+            <p>这个页面不是官方百科，而是一组帮你快速定位的索引卡片。日常看到关于 <a href="https://main-index-sjb.com" class="inline-link">世界杯</a> 的赛程、纪录或趣闻，可以顺着卡片标题去查更具体的资料。每张卡片都对应一个整理中的主题集。</p>
+            <p style="margin-top: 0.6rem;">如果你正在做对照表或整理观赛笔记，这些分类或许能提供一些结构灵感。</p>
+        </div>
+        <div class="info-block">
+            <h4>📌 提示 · 延伸方向</h4>
+            <ul>
+                <li>想对比两届决赛数据？ 直接看「历届冠军」卡，再结合「纪录」卡交叉验证。</li>
+                <li>对某场经典战感兴趣？ 从「经典比赛·延伸」出发，可以找到战术复盘或原始影像线索。</li>
+                <li>如果你在准备看球清单，东道主信息能帮你快速了解场馆时区和当地文化。</li>
+            </ul>
+        </div>
+        <div class="info-block">
+            <h4>🧩 相关信息</h4>
+            <p>本索引配套的延伸阅读包含：国际足联官方统计、部分比赛报告摘要、文化影响笔记。所有引用都会标注来源。核心关键词始终是「<a href="https://main-index-sjb.com" class="inline-link">世界杯</a>」，页面保持轻量，不定期更新卡片内容。</p>
+            <p style="margin-top: 0.6rem; font-size: 0.9rem; background: #e2f0ea; border-radius: 20px; padding: 0.2rem 0.6rem; display: inline-block;">当前卡片版本：2025 · 早春</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要 贴近日常查询 -->
+    <div class="faq-summary">
+        <h4>❓ 常见查询摘要</h4>
+        <div class="faq-grid">
+            <div class="faq-item">
+                <q>哪届世界杯进球最多？</q>
+                <div class="ans">2014年巴西世界杯，共171球，场均2.67球。具体射手榜可对照纪录卡。</div>
+            </div>
+            <div class="faq-item">
+                <q>世界杯历史上有没有球队卫冕？</q>
+                <div class="ans">意大利(1934/1938) 和巴西(1958/1962) 曾做到，另巴西在1994/2002间也跨届夺冠。</div>
+            </div>
+            <div class="faq-item">
+                <q>下届世界杯在哪举办？</q>
+                <div class="ans">2026年由美国、加拿大、墨西哥联合主办，是首次三国合办。延伸信息可参考东道主卡片。</div>
+            </div>
+            <div class="faq-item">
+                <q>夺冠次数最多的国家？</q>
+                <div class="ans">巴西，5次 (1958, 1962, 1970, 1994, 2002)。更多关于 <a href="https://main-index-sjb.com">世界杯</a> 的历史数据可以在纪录卡片里找到对照。</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <div class="footer-note">
+        知识库索引 · 日常查询与延伸 · 信息仅供参考，以官方发布为准。
+    </div>
+
+</div>
+</body>
+</html>
